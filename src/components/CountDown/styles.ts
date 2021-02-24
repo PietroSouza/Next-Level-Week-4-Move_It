@@ -1,7 +1,23 @@
 import styled from 'styled-components'
 
 export const MainContainer = styled.div`
- 
+    > button {
+        width: 100%;
+        height: 5rem;
+
+        margin-top: 2rem;
+
+        display:flex;
+        align-items: center;
+        justify-content: center;
+
+        border:0;
+        outline:none;
+        border-radius: 5px;
+
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
 `;
 
 export const ContainerCountDown = styled.div`
@@ -44,28 +60,31 @@ export const Number = styled.span`
 `;
 
 export const StartCountDownButton = styled.button`
-    width: 100%;
-    height: 5rem;
-
-    margin-top: 2rem;
-
-    display:flex;
-    align-items: center;
-    justify-content: center;
-
-    border:0;
-    outline:none;
-    border-radius: 5px;
-
     background: var(--blue);
     color: var(--white);
-
-    font-size: 1.25rem;
-    font-weight: 600;
 
     transition: background-color 0.2s;
 
     :hover {
         background: var(--blue-dark);
     }
+`;
+
+export const StopCountDownButton = styled.button`
+    background: var(--white);
+    color: var(--title);
+
+    transition: background-color 0.2s;
+
+    :hover {
+        background: var(--red);
+        color: var(--white);
+    }
+`;
+
+export const DisabledCountDownButton = styled.button`
+    cursor: not-allowed;
+
+    background: var(--white);
+    color: var(--text);
 `;
