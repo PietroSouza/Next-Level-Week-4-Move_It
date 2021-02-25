@@ -1,9 +1,21 @@
 import React, { useContext } from 'react'
 import { ChallengesContext } from '../../contexts/ChallengesContext';
+import { CountDownContext } from '../../contexts/CountDownContext';
 import { ChallengeBoxContainer, ChallengeNotActive, MainText, ContentChallengeNotActive, ChallengeActive, EarnXp, MainContentChallengeActive, TextChallenge, FooterContentChallengeActive, FailedButton, CompletedButton } from './styles';
 
 export function ChallengeBox() {
-    const { activeChallenge, resetChallenge } = useContext(ChallengesContext);
+    const { activeChallenge, resetChallenge, completeChallenge } = useContext(ChallengesContext);
+    const { resetCountDown } = useContext(CountDownContext);
+
+    function HandleChallengeCompleted() {
+        completeChallenge();
+        resetCountDown();
+    }
+
+    function HandleChallengeFailed() {
+        resetChallenge();
+        resetCountDown();
+    }
 
     return (
         <ChallengeBoxContainer>
@@ -17,8 +29,8 @@ export function ChallengeBox() {
                     </MainContentChallengeActive>
 
                     <FooterContentChallengeActive>
-                        <FailedButton type="button" onClick={resetChallenge}>Falhei</FailedButton>
-                        <CompletedButton type="button">Completei</CompletedButton>
+                        <FailedButton type="button" onClick={HandleChallengeFailed}>Falhei</FailedButton>
+                        <CompletedButton type="button" onClick={HandleChallengeCompleted}>Completei</CompletedButton>
                     </FooterContentChallengeActive>
                 </ChallengeActive>
            ) : (

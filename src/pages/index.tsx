@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { Container, ContentMain, ContentLeft, ContentRight } from '../styles/mainStyle';
+import { CountDownProvider } from '../contexts/CountDownContext'
 
 import { ExperienceBar } from "../components/ExperienceBar";
 import { Profile } from "../components/Profile";
@@ -14,17 +15,20 @@ export default function Home() {
           <title>Início | Move It</title>
         </Head>
         <ExperienceBar />
-        <ContentMain>
-            <ContentLeft> 
-                <Profile /> 
-                <CompletedChallenges /> 
-                <CountDown />
-            </ContentLeft>
+        
+        <CountDownProvider>
+          <ContentMain>
+              <ContentLeft> 
+                  <Profile /> 
+                  <CompletedChallenges /> 
+                  <CountDown />
+              </ContentLeft>
 
-            <ContentRight>
-                <ChallengeBox />
-            </ContentRight>
-        </ContentMain>
+              <ContentRight>
+                  <ChallengeBox />
+              </ContentRight>
+          </ContentMain>
+        </CountDownProvider>
     </Container>
   );
 }
